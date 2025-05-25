@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+ <link rel="stylesheet" href="style.css">
+</head>
+<title>To Do list</title>
+<body>
+ 
+   <div class="container">
+   <div class="contain">
+
+   </div>
+         
+      <h1> To do List</h1>
+
+    <div class="headerbio">
+
+      <div class="image">
+         <img src="img/avatar-svgrepo-com.svg ">
+      </div>
+
+      <div class="biodata">
+        <strong>Linda Sofiana</strong><br>
+        <strong>Member Bootcamp</strong>
+      </div>
+     
+
+     <div class="waktu">
+      <div id="clock"></div>
+      <div id="tanggal"></div>
+     </div>
+
+    </div>
+
+ <div class="bodytengah">
+  <br>
+  <br>
+ <div class="one">
+     <label for="priority">Prioritas</label>
+       <select id="priority">
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+       </select>
+
+     <label for="date">Tanggal</label>
+        <input type="date" id="date">
+  </div>
+ <br>
+ <div class="three">
+    <label for="text">Task</label><br>
+        <input type="text" id="task" placeholder="Nama Tugas" style="width: 500px; height:150px;">
+    </div>
+
+      <button class="btn" onclick="tambahTugas()">Tambah</button>
+      <button class="btn"onclick="resetInput()">Reset</button>
+  </div>
+
+  <div class="table-container">
+  
+    <table>
+      <thead>
+        <tr><th>TO DO</th></tr>
+      </thead>
+      <tbody id="todo-body"></tbody>
+    </table>
+
+    <table>
+      <thead>
+        <tr><th>DONE</th></tr>
+      </thead>
+      <tbody id="done-body"></tbody>
+    </table>
+  </div>
+
+  <script>
+
+    function updateClockAndDate() {
+      const now = new Date();
+
+      // Format jam
+      const jam = String(now.getHours()).padStart(2, '0');
+      const menit = String(now.getMinutes()).padStart(2, '0');
+      const detik = String(now.getSeconds()).padStart(2, '0');
+      const waktu = `${jam}:${menit}:${detik}`;
+      document.getElementById("clock").textContent = `Waktu: ${waktu}`;
+
+      // Format tanggal
+      const hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+      const bulan = [
+        'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+        'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+      ];
+      const namaHari = hari[now.getDay()];
+      const tanggal = now.getDate();
+      const namaBulan = bulan[now.getMonth()];
+      const tahun = now.getFullYear();
+
+      const tanggalLengkap = `${namaHari}, ${tanggal} ${namaBulan} ${tahun}`;
+      document.getElementById("tanggal" ).textContent = `Tanggal: ${tanggalLengkap}`;
+    }
+
+    // Update setiap detik
+    setInterval(updateClockAndDate, 1000);
+    updateClockAndDate();
+
+
+    //menambahkan tugas ke tabel
+    function tambahTugas() {
+      const taskValue = document.getElementById("task").value.trim();
+      const dateValue = document.getElementById("date").value;
+      const priorityValue = document.getElementById("priority").value;
+
+      if (!taskValue || !dateValue || !priorityValue) {
+        alert("Silakan isi nama tugas, tanggal, dan prioritas.");
+        return;
+      }
+
+      // Buat baris untuk tabel TO DO
+      const row = document.createElement("tr");
+      const cell = document.createElement("td");
+      cell.className = "task-row";
+      cell.setAttribute("data-date", dateValue); // simpan tanggal
+      cell.setAttribute("data-priority", priorityValue); // simpan prioritas
+
+      const taskText = document.createElement("span");
+      taskText.textContent = taskValue;
+
+      const btn = document.createElement("button");
+      btn.textContent = "Selesai";
+      btn.onclick = function () {
+        pindahKeDone(taskValue, dateValue, priorityValue);
+        row.remove();
+      };
+
+      cell.appendChild(taskText);
+      cell.appendChild(btn);
+      row.appendChild(cell);
+
+      document.getElementById("todo-body").appendChild(row);
+
+      // Reset input setelah submit
+      resetInput();
+    }
+
+    function pindahKeDone(task, date, priority) {
+      const row = document.createElement("tr");
+      const cell = document.createElement("td");
+      cell.textContent = task;
+      cell.setAttribute("data-date", date);
+      cell.setAttribute("data-priority", priority);
+      row.appendChild(cell);
+      document.getElementById("done-body").appendChild(row);
+    }
+
+    function resetInput() {
+      document.getElementById("task").value = "";
+      document.getElementById("date").value = "";
+      document.getElementById("priority").value = "Low";
+    }
+  </script>
+
+</body>
+</html>
+

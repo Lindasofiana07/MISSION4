@@ -1,0 +1,128 @@
+  
+
+    input, button, select{
+      margin: 6px;
+      padding: 6px;
+     border-radius: 10px;
+    }
+    .btn{
+        background-color: rgb(91, 156, 156);
+    }
+label{
+    font-family: sans-serif;
+    font-size: 15px;
+}
+.teks{
+    width: 100%;         /* Lebar penuh dari parent-nya */
+    max-width: 600px;    /* Batas maksimum */
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+  
+}
+    .table-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    table {
+      width: 48%;
+      border-collapse: collapse;
+    }
+
+ th, td {
+      border: 1px solid #444;
+      padding: 10px;
+      text-align: left;
+    }
+
+th {
+      background-color: #f2f2f2;
+    }
+
+img{
+   height: auto;
+   width:50px;
+}
+
+h2{
+    text-align: left;
+}
+
+p{
+    font-family: sans-serif;
+    margin: top 0;
+    font-size:80%;
+    line-height:0,5;
+}
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+body {
+    background-color: #5c5252;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 50px;
+}
+.bodytengah{
+background-color: rgb(228, 230, 233);
+}
+.one{
+      justify-content: space-between;
+     align-items: flex-start;
+      
+}
+
+.container{
+    background: #fff;
+    padding:25px;
+    border-radius: 20px;
+    width: 150%;
+    max-width:600px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+   
+}
+
+.contain {
+      position: fixed;        /* Tetap di posisi saat scroll */
+      top: 10px;              /* Jarak dari atas */
+      right: 20px;            /* Jarak dari kanan */
+      text-align: right;
+      background: #f8f8f8;
+      padding: 10px 15px;
+      border-radius: 5px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      font-family: Arial, sans-serif;
+    }
+
+ #clock {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+
+    }
+
+ #date {
+      font-size: 12px;
+      color: #555;
+    }
+.biodata{
+    font-size: 16px;
+    line-height: 1.4;
+}
+.waktu{
+    text-align: right; 
+}
+.headerbio{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      background-color: #6bb0b6;
+      padding: 10px 20px;
+      border-radius: 6px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
